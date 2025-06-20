@@ -44,13 +44,15 @@ A Model Context Protocol (MCP) server that provides access to [Outline](https://
    - Go to your Outline workspace
    - Navigate to **Settings → API & Apps**
    - Create a new API token
+   - Add the following scopes
+     ```
+      auth.info documents.read documents.info documents.list documents.search documents.drafts documents.viewed documents.export documents.answerQuestion collections.read collections.info collections.list collections.documents
+     ```
    - Copy the token (it starts with `ol_api_`)
 
 4. **Set environment variables**:
    ```bash
    export OUTLINE_API_TOKEN="your_api_token_here"
-   # Optional: if you're using a self-hosted instance
-   export OUTLINE_BASE_URL="https://your-outline-instance.com/api"
    ```
 
 ## Usage
@@ -68,17 +70,15 @@ uv run mcp dev outline_mcp_server.py
 uv run outline_mcp_server.py
 ```
 
-### Claude Desktop Integration
+### Cursor/Claude Desktop Integration
 
-To use this server with Claude Desktop, add it to your Claude Desktop configuration:
-
-1. **Open Claude Desktop configuration**:
+1. **Open Claude Desktop/Cursor configuration**:
    ```bash
-   # macOS
-   code ~/Library/Application\ Support/Claude/claude_desktop_config.json
+   # claude
+   ~/Library/Application\ Support/Claude/claude_desktop_config.json
    
-   # Linux
-   code ~/.config/Claude/claude_desktop_config.json
+   # cursor
+   ~/.cursor/mcp.json
    ```
 
 2. **Add the server configuration**:
@@ -101,7 +101,7 @@ To use this server with Claude Desktop, add it to your Claude Desktop configurat
    }
    ```
 
-3. **Restart Claude Desktop**
+3. **Restart Claude Desktop/Cursor**
 
 ## Available Tools
 
